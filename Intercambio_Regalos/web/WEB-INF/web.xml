@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <servlet>
+        <servlet-name>Inicio</servlet-name>
+        <servlet-class>intercambio.Inicio</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Registro</servlet-name>
+        <servlet-class>intercambio.Registro</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdministarIntercambios</servlet-name>
+        <servlet-class>intercambio.AdministarIntercambios</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CrearIntercambio</servlet-name>
+        <servlet-class>intercambio.CrearIntercambio</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Inicio</servlet-name>
+        <url-pattern>/Inicio</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Registro</servlet-name>
+        <url-pattern>/Registro</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdministarIntercambios</servlet-name>
+        <url-pattern>/AdministarIntercambios</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CrearIntercambio</servlet-name>
+        <url-pattern>/CrearIntercambio</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>

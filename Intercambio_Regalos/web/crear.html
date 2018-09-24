@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+    <title>Crear Intercambio</title>
+    <link href="Css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <script src="Js/bootstrap/bootstrap.min.js"></script>
+    <script src="Js/jquery/jquery-3.3.1.min.js"></script>
+    <script src="Js/crear.js"></script>
+    <link href="Css/css_inicio.css" rel="stylesheet" />
+</head>
+
+<body>
+        <header>
+                <input type="button" value="Salir" class="login-button-salir" id="salir">
+        </header>
+        <form class="login" action="#">
+                <h1 class="login-title">Registro</h1>
+                <input type="text" class="login-input" placeholder="Nombre del Intercambio" id="nombre" autofocus required>
+                <label>Monto Maximo</label><input type="number" min="0" class="login-input" id="monto_maximo"  required/>
+                <label>Fecha del Intercambio</label><input type="date" id="fecha_limite"  required>
+                <label>Fecha Limite de Registro</label><input type="date" id="fecha_intercambio"  required>
+                <label>Comentarios</label><textarea rows="4" cols="50" id="comentarios">Escribe un comentario</textarea>
+                <input type="submit" value="Guardar" class="login-button-registro" id="guardar">
+        </form>
+</body>
+</html>

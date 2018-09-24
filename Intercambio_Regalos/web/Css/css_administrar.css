@@ -1,0 +1,173 @@
+body {
+    background: #2d343d;
+  }
+  
+  .login {
+    margin: 20px auto;
+    width: 330px;
+    padding: 30px 25px;
+    background: white;
+    border: 1px solid #c4c4c4;
+  }
+  
+  h1.login-title {
+    margin: -28px -25px 25px;
+    padding: 15px 25px;
+    line-height: 30px;
+    font-size: 25px;
+    font-weight: 300;
+    color: #ADADAD;
+    text-align:center;
+    background: #f7f7f7;
+   
+  }
+  
+  .login-input {
+    width: 285px;
+    height: 50px;
+    margin-bottom: 25px;
+    padding-left:10px;
+    font-size: 15px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  .login-input:focus {
+      border-color:#6e8095;
+      outline: none;
+    }
+  .login-button {
+    width: 100%;
+    height: 50px;
+    padding: 0;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    background: #f0776c;
+    border: 0px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer; 
+    outline:0;
+  }
+
+  .vista{
+    margin-left: 0px;
+    border: none;
+    
+  }
+
+  .editar{
+    margin-left: 0px;
+    border: none;
+  }
+
+  .eliminar{
+    margin-left: 60px;
+    border: none;
+    
+  }
+
+  .vista:hover{
+    background: #fff;
+    color: rgb(74, 138, 190);
+  }
+
+  .editar:hover{
+    background: #fff;
+    color: rgb(19, 233, 90);
+  }
+
+  .eliminar:hover{
+    background: #fff;
+    color: rgb(233, 19, 19);
+  }
+
+  .vista:active{
+    background: #fff;
+    border:none;
+  }
+
+  .editar:active{
+    background: #fff;
+    border:none;
+  }
+
+  .eliminar:active{
+    background: #fff;
+    border:none;
+  }
+
+  .vista:focus{
+    background: #fff;
+    border:none;
+  }
+
+  .editar:focus{
+    background: #fff;
+    border:none;
+  }
+
+  .eliminar:focus{
+    background: #fff;
+    border:none;
+  }
+
+  .vista:visited{
+    background: #fff;
+    border:none;
+  }
+
+  .editar:visited{
+    background: #fff;
+    border:none;
+  }
+
+  .eliminar:visited{
+    background: #fff;
+    border:none;
+  }
+
+  .login-button-registro{
+    width: 100%;
+    height: 50px;
+    padding: 0;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    background: #6c89f0;
+    border: 0px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer; 
+    outline:0;
+  }
+
+  .login-button-salir {
+    width: 150px;
+    height: 50px;
+    padding: 0;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    background: #03c5ab;
+    border: 0px;
+    margin-top: 10px;
+    margin-left: 85%;
+    border-radius: 5px;
+    cursor: pointer; 
+    outline:0;
+  }
+  
+  .login-lost
+  {
+    text-align:center;
+    margin-bottom:0px;
+  }
+  
+  .login-lost a
+  {
+    color:#666;
+    text-decoration:none;
+    font-size:13px;
+  }
