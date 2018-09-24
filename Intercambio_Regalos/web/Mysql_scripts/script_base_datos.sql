@@ -22,7 +22,7 @@ create table tema(
 
 create table intercambio (
     id int primary key not null auto_increment,
-    nombre varchar(10),
+    nombre varchar(20),
     id_tema int,
     monto_maximo decimal(6,2),
     fecha_limite date,

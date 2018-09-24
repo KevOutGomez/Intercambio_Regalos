@@ -25,7 +25,7 @@ public class Registro extends HttpServlet {
         String query = "select alias from usuario where correo = '"+correo+"'";
         Conexion conexion = new Conexion(); 
         try {
-            conexion.crearConexion("localhost","convivio","root","root");
+            conexion.crearConexion("localhost","convivio","root","kev20165979");
             AccionesDB acciones = new AccionesDB(conexion);
             HttpSession session= request.getSession(true);
             ResultSet rs = null;

@@ -29,7 +29,7 @@ public class CrearIntercambio extends HttpServlet {
         System.out.println(id_usuario);
         Conexion conexion = new Conexion();
         try {
-            conexion.crearConexion("localhost","convivio","root","root");
+            conexion.crearConexion("localhost","convivio","root","kev20165979");
             AccionesDB acciones = new AccionesDB(conexion);
             ResultSet rs;
             if (opcion.equals("1")) {

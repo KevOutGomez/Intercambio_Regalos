@@ -24,7 +24,7 @@ public class AdministarIntercambios extends HttpServlet {
         String query ="";
         Conexion conexion = new Conexion(); 
         try {
-            conexion.crearConexion("localhost","convivio","root","root");
+            conexion.crearConexion("localhost","convivio","root","kev20165979");
             AccionesDB acciones = new AccionesDB(conexion);
             ResultSet rs;
             String respuesta = "";
@@ -48,7 +48,7 @@ public class AdministarIntercambios extends HttpServlet {
                     out.print("true");
                     break;
                 case 2:
-                    query = "select usuario.nombre from usuario, usuario_intercambio where usuario_intercambio.id_usuario = usuario.id and usuario_intercambio.estado_aceptacion = 1 and usuario_intercambio.id_intercambio ="+idIntercambio;
+                    query = "select usuario.nombre from usuario, usuario_intercambio where usuario_intercambio.id_usuario = usuario.correo and usuario_intercambio.estado_aceptacion = 1 and usuario_intercambio.id_intercambio ="+idIntercambio;
                     rs = acciones.select(query);
                     respuesta = "<div class='vista1'>";
                     respuesta += "<h6>Invitados</h6>";
@@ -65,13 +65,13 @@ public class AdministarIntercambios extends HttpServlet {
                                     +"<label>Fecha del Intercambio: "+rs.getDate("intercambio.fecha_intercambio")+"</label><br/>"
                                     +"<label>Comentarios: "+rs.getString("intercambio.comentarios")+"</label><br/>";
                     }
-                    respuesta += "<button id='cerrar'>Cerrar</button></div>";
+                    respuesta += "<button class='cerrar' onclick='cerrar()'>Cerrar</button></div>";
                     out.print(respuesta);
                     break;
                 case 3:
                     Calendar fecha = new GregorianCalendar();
                     String fecha_actual = fecha.get(Calendar.YEAR)+"-"+fecha.get(Calendar.MONTH)+"-"+fecha.get(Calendar.DAY_OF_MONTH);
-                    query = "select usuario.nombre from usuario, usuario_intercambio where usuario_intercambio.id_usuario = usuario.id and usuario_intercambio.estado_aceptacion = true and usuario_intercambio.id_intercambio ="+idIntercambio;
+                    query = "select usuario.nombre from usuario, usuario_intercambio where usuario_intercambio.id_usuario = usuario.correo and usuario_intercambio.estado_aceptacion = true and usuario_intercambio.id_intercambio ="+idIntercambio;
                     rs = acciones.select(query);
                     respuesta = "<div class='edicion'>";
                     respuesta += "<h6>Invitados</h6>";
@@ -95,10 +95,24 @@ public class AdministarIntercambios extends HttpServlet {
                                     +"<label>Fecha del Intercambio: </label><input type='date' max='"+fecha_actual+"' value='"+rs.getDate("intercambio.fecha_intercambio")+"' id='fecha_intercambio'/><br/>"
                                     +"<label>Comentarios: </label><textarea rows='4' cols='50' id='comentarios'>"+rs.getString("intercambio.comentarios")+"</textarea><br/>";
                     }
-                    respuesta += "<button id='guardar'>Guardar</button></div>";
+                    respuesta += "<button id='guardar' onclick='actualizar("+idIntercambio+")'>Guardar</button></div>";
                     out.print(respuesta);
                     break;
                 case 4:
+                    String id = request.getParameter("id");
+                    String tema = request.getParameter("tema");
+                    String monto = request.getParameter("monto");
+                    String fecha_limite = request.getParameter("fecha_limite");
+                    String fecha_intercambio = request.getParameter("fecha_intercambio");
+                    String comentarios = request.getParameter("comentarios");
+                    query = "select id from tema where nombre_tema = '"+tema+"'";
+                    rs = acciones.select(query);
+                    while(rs.next()){
+                        tema = rs.getString("id");
+                    }
+                    query = "update intercambio set id_tema = "+tema+", monto_maximo = "+monto+", fecha_limite = '"+fecha_limite+"', fecha_intercambio = '"+fecha_intercambio+"', comentarios = '"+comentarios+"' where id = "+id;
+                    acciones.insertDeleteUpdate(query);
+                    out.print("Intercambio modificado");
                     break;
                 default:
                     break;

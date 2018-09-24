@@ -22,7 +22,7 @@ public class Inicio extends HttpServlet {
         String query = "select * from usuario where correo = '"+correo+"' and contrasenia = '"+contrasenia+"'";
         Conexion conexion = new Conexion(); 
         try {
-            conexion.crearConexion("localhost","convivio","root","root");
+            conexion.crearConexion("localhost","convivio","root","kev20165979");
             AccionesDB acciones = new AccionesDB(conexion);
             ResultSet rs = null;
             rs = acciones.select(query);
