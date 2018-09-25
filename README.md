@@ -4,6 +4,7 @@ No olvides cambiar la contraseña de tu usuario de mysql en las clases
 * CrearIntercambio.java
 * Inicio.java
 * Registro.java
+* AccionesIntercambio.java
 
 En especifico en la linea que dice
 ```java
