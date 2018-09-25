@@ -1,4 +1,4 @@
-var correo = localStorage.getItem("correo");
+var correo = localStorage.getItem("id_usuario");
 $(document).ready(function(){
     $("#agregar_amigo").click(function(){
         var agregar = "<div class='acciones'>"
@@ -12,12 +12,16 @@ $(document).ready(function(){
         });
     });
     
-    $("#ver_intercambio").click(function(){
+    $("#intercambio_ver").click(function(){
         var agregar = "<div class='acciones'>"
                        +"<input type='number' id='id_intercambio' placeholder='Id del Intercambio'focus/>"
                        +"<input type='button' onclick='ver_intercambio()' value='Ver Intercambio'/>"
                        +"<input type='button' onclick='cerrar()' value='cerrar'/>"
                        +"<div>";
+        $("#intercambio_ver").parent().append(agregar);
+        $.post("AccionesIntercambio",{opcion:5,correo:correo},function(result){
+            $(".acciones").append(result);
+        });
     });
     
     $("#salir").click(function(){
@@ -38,16 +42,23 @@ function cerrar(){
 }
 
 function ver_intercambio(){
-    var id_intercambio = $("id_intercambio").val();
+    var id_intercambio = $("#id_intercambio").val();
+    
     $.post("AccionesIntercambio",{opcion:3,id_intercambio:id_intercambio,correo:correo},function(result){
         $(".acciones").append(result);
+        console.log(result);
     });
 }
 
 function aceptar(id_intercambio){
-    $.post("AdministrarIntercambio",{opcion:4,id_intercambio,id_intercambio,correo:correo},function(result){
-        
+    $(".acciones").remove();
+    $.post("AccionesIntercambio",{opcion:4,id_intercambio,id_intercambio,correo:correo},function(result){
+        console.log(result);
     });
+}
+
+function rechar(){
+    $(".acciones").remove();
 }
 
 
