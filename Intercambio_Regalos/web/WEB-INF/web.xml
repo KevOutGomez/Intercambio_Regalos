@@ -16,6 +16,10 @@
         <servlet-name>CrearIntercambio</servlet-name>
         <servlet-class>intercambio.CrearIntercambio</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AccionesIntercambio</servlet-name>
+        <servlet-class>intercambio.AccionesIntercambio</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Inicio</servlet-name>
         <url-pattern>/Inicio</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>CrearIntercambio</servlet-name>
         <url-pattern>/CrearIntercambio</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AccionesIntercambio</servlet-name>
+        <url-pattern>/AccionesIntercambio</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
