@@ -33,6 +33,7 @@ $(document).ready(function(){
 function enviar(){
     var correo_amigo = $("#correo_amigo").val();
     $.post("AccionesIntercambio",{opcion:2,correo:correo,correo_amigo:correo_amigo},function(result){
+        console.log(result);
         $(".acciones").append(result);
     });
 }

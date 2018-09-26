@@ -42,10 +42,11 @@ public class AccionesIntercambio extends HttpServlet {
                     out.print(respuesta);
                     break;
                 case 2:
+                    correo = request.getParameter("correo");
                     correo_amigo = request.getParameter("correo_amigo");
                     query = "insert into amigos values ('"+correo+"','"+correo_amigo+"')";
                     acciones.insertDeleteUpdate(query);
-                    correo = request.getParameter("correo");
+                    
                     query = "select usuario.alias, usuario.correo from usuario,amigos where amigos.correo_amigo=usuario.correo and amigos.correo_amigo='"+correo_amigo+"' and amigos.correo_usuario='"+correo+"'";
                     rs = acciones.select(query);
                     while(rs.next()){
@@ -68,9 +69,9 @@ public class AccionesIntercambio extends HttpServlet {
                     }
                     respuesta += "<button  onclick='aceptar("+id_intercambio+")'>Aceptar</button><br/>"
                                  +"<button  onclick='rechar()'>Rechazar</button><br/>";
-                    query = "select intercambio.nombre, tema.nombre_tema, intercambio.fecha_intercambio, usuario_intercambio.id_intercambiar "
-                            + "from intercambio, tema, usuario_intercambio where usuario_intercambio.estado_aceptacion=1 and tema.id = intercambio.id_tema and intercambio.id = usuario_intercambio.id_intercambio "
-                            + "and usuario_intercambio.id_usuario = '"+correo+"'";
+                    query = "select intercambio.nombre, tema.nombre_tema, intercambio.fecha_intercambio, usuario_intercambio.id_intercambiar, usuario.alias "
+                            + "from usuario, intercambio, tema, usuario_intercambio where usuario_intercambio.estado_aceptacion=1 and tema.id = intercambio.id_tema and intercambio.id = usuario_intercambio.id_intercambio "
+                            + "and usuario.correo = usuario_intercambio.id_intercambiar and usuario_intercambio.id_usuario = '"+correo+"'";
                     rs = acciones.select(query);
                     respuesta += "<h5>Tus Intercambios</h5><br/>";
                     while(rs.next()){
@@ -78,7 +79,7 @@ public class AccionesIntercambio extends HttpServlet {
                                     + "<label>Nombre del Intercambio: "+rs.getString("intercambio.nombre")+"</label>"
                                     +"<label>Tema del Intercambio: "+rs.getString("tema.nombre_tema")+"</label>"
                                     +"<label>Fecha del Intercambio: "+rs.getDate("intercambio.fecha_intercambio")+"</label>"
-                                    +"<label>Te toco: "+rs.getDate("usuario_intercambio.id_intercambiar")+"</label>"
+                                    +"<label>Te toco: "+rs.getString("usuario.alias")+"    Su correo es: "+rs.getString("usuario_intercambio.id_intercambiar")+"   </label>"
                                     +"<div>";
                     }
                     System.out.println(respuesta);
@@ -105,7 +106,9 @@ public class AccionesIntercambio extends HttpServlet {
                     int temp = (int) (Math.random() * al.size()) + 1;
                     int temp2 = 0;
                     while(temp2 < al.size()){
-                        if(temp >= al.size()){
+                        if(al.size() == 2){
+                            temp = 1;
+                        }else if(temp >= al.size()){
                             temp = 0;
                         }
                         query = "update usuario_intercambio set id_intercambiar='"+al.get(temp)+"' where id_usuario='"+al.get(temp2)+"' and id_intercambio="+id_intercambio;
