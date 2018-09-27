@@ -35,10 +35,12 @@ public class AccionesIntercambio extends HttpServlet {
                     correo = request.getParameter("correo");
                     query = "select usuario.alias, usuario.correo from usuario,amigos where amigos.correo_amigo=usuario.correo and amigos.correo_usuario='"+correo+"'";
                     rs = acciones.select(query);
+                    respuesta = "<div>";
                     while(rs.next()){
                         respuesta += "<h5>Amigos</h5>"
                                     +"<label>Alias: "+rs.getString("usuario.alias")+"    Correo: "+rs.getString("usuario.correo")+"</label><br/>";
                     }
+                    respuesta += "</div>";
                     out.print(respuesta);
                     break;
                 case 2:
@@ -49,9 +51,11 @@ public class AccionesIntercambio extends HttpServlet {
                     
                     query = "select usuario.alias, usuario.correo from usuario,amigos where amigos.correo_amigo=usuario.correo and amigos.correo_amigo='"+correo_amigo+"' and amigos.correo_usuario='"+correo+"'";
                     rs = acciones.select(query);
+                    respuesta = "<div>";
                     while(rs.next()){
-                        respuesta = "<label>Alias: "+rs.getString("usuario.alias")+"    Correo: "+rs.getString("usuario.correo")+"</label><br/>";
+                        respuesta += "<label>Alias: "+rs.getString("usuario.alias")+"    Correo: "+rs.getString("usuario.correo")+"</label><br/>";
                     }
+                    respuesta += "</div>";
                     out.print(respuesta);
                     break;
                 case 3:
@@ -59,8 +63,9 @@ public class AccionesIntercambio extends HttpServlet {
                     id_intercambio = request.getParameter("id_intercambio");
                     query = "select tema.nombre_tema, intercambio.monto_maximo, intercambio.fecha_limite, intercambio.fecha_intercambio, intercambio.comentarios from tema, intercambio where intercambio.id_tema = tema.id and intercambio.id = "+id_intercambio;
                     rs = acciones.select(query);
+                    respuesta = "<div>";
                     while(rs.next()){
-                        respuesta = "<label>Clave del intercambio: "+id_intercambio+"</label><br/>"
+                        respuesta += "<label>Clave del intercambio: "+id_intercambio+"</label><br/>"
                                   + "<label>Tema: "+rs.getString("tema.nombre_tema")+"</label><br/>"
                                   +"<label>Monto maximo: $"+rs.getDouble("intercambio.monto_maximo")+"</label><br/>"
                                   +"<label>Fecha Limite: "+rs.getDate("intercambio.fecha_limite")+"</label><br/>"
@@ -75,13 +80,14 @@ public class AccionesIntercambio extends HttpServlet {
                     rs = acciones.select(query);
                     respuesta += "<h5>Tus Intercambios</h5><br/>";
                     while(rs.next()){
-                        respuesta += "<div class='acciones'"
+                        respuesta += "<div class='acciones_intercambio'>"
                                     + "<label>Nombre del Intercambio: "+rs.getString("intercambio.nombre")+"</label>"
                                     +"<label>Tema del Intercambio: "+rs.getString("tema.nombre_tema")+"</label>"
                                     +"<label>Fecha del Intercambio: "+rs.getDate("intercambio.fecha_intercambio")+"</label>"
                                     +"<label>Te toco: "+rs.getString("usuario.alias")+"    Su correo es: "+rs.getString("usuario_intercambio.id_intercambiar")+"   </label>"
-                                    +"<div>";
+                                    +"</div>";
                     }
+                    respuesta += "</div>";
                     System.out.println(respuesta);
                     out.print(respuesta);
                     break;
@@ -126,12 +132,12 @@ public class AccionesIntercambio extends HttpServlet {
                     rs = acciones.select(query);
                     respuesta += "<h5>Tus Intercambios</h5><br/>";
                     while(rs.next()){
-                        respuesta += "<div class='acciones'"
+                        respuesta += "<div class='acciones_intercambio'>"
                                     + "<label>Nombre del Intercambio: "+rs.getString("intercambio.nombre")+"</label>"
                                     +"<label>Tema del Intercambio: "+rs.getString("tema.nombre_tema")+"</label>"
                                     +"<label>Fecha del Intercambio: "+rs.getDate("intercambio.fecha_intercambio")+"</label>"
                                     +"<label>Te toco: "+rs.getString("usuario_intercambio.id_intercambiar")+"</label>"
-                                    +"<div>";
+                                    +"</div>";
                     }
                     out.print(respuesta);
                     break;
