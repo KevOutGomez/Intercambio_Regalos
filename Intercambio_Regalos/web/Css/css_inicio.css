@@ -94,3 +94,44 @@ body {
     text-decoration:none;
     font-size:13px;
   }
+ 
+  .fondo{
+        height: 900px;
+        width: 100%;
+   }
+   
+   .person{
+       height: 125px;
+       width: 125px;
+       margin-left: 80px;
+   }
+   
+   #comentarios{
+    width: 285px;    
+    margin-bottom: 25px;
+    padding-left:10px;
+    font-size: 15px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+   }
+   
+   #fecha_limite{
+    width: 285px;    
+    margin-bottom: 25px;
+    padding-left:10px;
+    font-size: 15px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+   }
+   
+   #fecha_intercambio{
+    width: 285px;    
+    margin-bottom: 25px;
+    padding-left:10px;
+    font-size: 15px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+   }

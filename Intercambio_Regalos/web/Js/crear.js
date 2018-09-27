@@ -26,5 +26,9 @@ var id_usuario = localStorage.getItem("id_usuario");
         window.location.href = "http://localhost:8080/Intercambio_Regalos/inicio.html";
     });
     
+    $("#regresar").click(function(){
+        window.location.href = "http://localhost:8080/Intercambio_Regalos/administrar_intercambio.html";
+    });
+    
 });
 

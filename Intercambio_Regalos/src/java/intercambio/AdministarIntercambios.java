@@ -50,8 +50,8 @@ public class AdministarIntercambios extends HttpServlet {
                 case 2:
                     query = "select usuario.nombre from usuario, usuario_intercambio where usuario_intercambio.id_usuario = usuario.correo and usuario_intercambio.estado_aceptacion = 1 and usuario_intercambio.id_intercambio ="+idIntercambio;
                     rs = acciones.select(query);
-                    respuesta = "<div class='vista1'>";
-                    respuesta += "<h6>Invitados</h6>";
+                    respuesta = "<div class='vista1 login'>";
+                    respuesta += "<h6 class='login-title'>Invitados</h6>";
                     while(rs.next()){
                         respuesta += "<label>"+rs.getString("usuario.nombre")+"</label><br/>";
                     }
@@ -65,7 +65,7 @@ public class AdministarIntercambios extends HttpServlet {
                                     +"<label>Fecha del Intercambio: "+rs.getDate("intercambio.fecha_intercambio")+"</label><br/>"
                                     +"<label>Comentarios: "+rs.getString("intercambio.comentarios")+"</label><br/>";
                     }
-                    respuesta += "<button class='cerrar' onclick='cerrar()'>Cerrar</button></div>";
+                    respuesta += "<button class='cerrar login-button-modificar' onclick='cerrar()'>Cerrar</button></div>";
                     out.print(respuesta);
                     break;
                 case 3:
@@ -73,15 +73,15 @@ public class AdministarIntercambios extends HttpServlet {
                     String fecha_actual = fecha.get(Calendar.YEAR)+"-"+fecha.get(Calendar.MONTH)+"-"+fecha.get(Calendar.DAY_OF_MONTH);
                     query = "select usuario.nombre from usuario, usuario_intercambio where usuario_intercambio.id_usuario = usuario.correo and usuario_intercambio.estado_aceptacion = true and usuario_intercambio.id_intercambio ="+idIntercambio;
                     rs = acciones.select(query);
-                    respuesta = "<div class='edicion'>";
-                    respuesta += "<h6>Invitados</h6>";
+                    respuesta = "<div class='vista1 login'>";
+                    respuesta += "<h6 class='login-title'>Invitados</h6>";
                     while(rs.next()){
                         respuesta += "<label>"+rs.getString("usuario.nombre")+"</label><br/>";
                     }
                     
                     query = "select nombre_tema from tema";
                     respuesta += "<label>Clave del intercambio: "+idIntercambio+"</label><br/>";
-                    respuesta += "<select id='tema'>";
+                    respuesta += "<select id='tema'class='login-input'>";
                     rs = acciones.select(query);
                     while(rs.next()){
                         respuesta += "<option value='"+rs.getString("nombre_tema")+"'>"+rs.getString("nombre_tema")+"</option>";
@@ -90,12 +90,14 @@ public class AdministarIntercambios extends HttpServlet {
                     query = "select intercambio.monto_maximo, intercambio.fecha_limite, intercambio.fecha_intercambio, intercambio.comentarios from tema, intercambio where intercambio.id_tema = tema.id and intercambio.id = "+idIntercambio;
                     rs = acciones.select(query);
                     while(rs.next()){
-                        respuesta += "<label>Monto maximo: </label><input type='number' min='0' value='"+rs.getDouble("intercambio.monto_maximo")+"' id='monto_maximo'/><br/>"
-                                    +"<label>Fecha Limite: </label><input type='date' value='"+rs.getDate("intercambio.fecha_limite")+"' id='fecha_limite'/><br/>"
-                                    +"<label>Fecha del Intercambio: </label><input type='date' max='"+fecha_actual+"' value='"+rs.getDate("intercambio.fecha_intercambio")+"' id='fecha_intercambio'/><br/>"
-                                    +"<label>Comentarios: </label><textarea rows='4' cols='50' id='comentarios'>"+rs.getString("intercambio.comentarios")+"</textarea><br/>";
+                        respuesta += "<label>Monto maximo: </label><input class='login-input' type='number' min='0' value='"+rs.getDouble("intercambio.monto_maximo")+"' id='monto_maximo'/><br/>"
+                                    +"<label>Fecha Limite: </label><input class='login-input' type='date' value='"+rs.getDate("intercambio.fecha_limite")+"' id='fecha_limite'/><br/>"
+                                    +"<label>Fecha del Intercambio: </label><input class='login-input' type='date' max='"+fecha_actual+"' value='"+rs.getDate("intercambio.fecha_intercambio")+"' id='fecha_intercambio'/><br/>"
+                                    +"<label>Comentarios: </label><textarea class='login-input' rows='4' cols='30' id='comentarios'>"+rs.getString("intercambio.comentarios")+"</textarea><br/>";
                     }
-                    respuesta += "<button id='guardar' onclick='actualizar("+idIntercambio+")'>Guardar</button></div>";
+                    respuesta += "<button id='guardar' class='login-button' onclick='actualizar("+idIntercambio+")'>Guardar</button>"
+                            + "<button class='cerrar login-button-modificar' onclick='cerrar()'>Cerrar</button>"
+                            + "</div>";
                     out.print(respuesta);
                     break;
                 case 4:

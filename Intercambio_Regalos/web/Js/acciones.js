@@ -2,9 +2,9 @@ var correo = localStorage.getItem("id_usuario");
 $(document).ready(function(){
     $("#agregar_amigo").click(function(){
         var agregar = "<div class='acciones'>"
-                       +"<input type='email' id='correo_amigo' placeholder='Correo Electronico'focus/>"
-                       +"<input type='button' onclick='enviar()' value='Agregar Amigo'/>"
-                       +"<input type='button' onclick='cerrar(1)' value='cerrar'/>"
+                       +"<input type='email' class='login-input' id='correo_amigo' placeholder='Correo Electronico'focus/>"
+                       +"<input type='button' class='login-button-modificar' onclick='enviar()' value='Agregar Amigo'/>"
+                       +"<input type='button' class='login-button-modificar' onclick='cerrar(1)' value='cerrar'/>"
                        +"<div>";
         $("#agregar_amigo").parent().append(agregar);
         $.post("AccionesIntercambio",{opcion:1,correo:correo},function(result){
@@ -14,9 +14,9 @@ $(document).ready(function(){
     
     $("#intercambio_ver").click(function(){
         var agregar = "<div class='acciones_intercambio'>"
-                       +"<input type='number' id='id_intercambio' placeholder='Id del Intercambio'focus/>"
-                       +"<input type='button' onclick='ver_intercambio()' value='Ver Intercambio'/>"
-                       +"<input type='button' onclick='cerrar(2)' value='cerrar'/>"
+                       +"<input type='number' class='login-input' id='id_intercambio' placeholder='Id del Intercambio'focus/>"
+                       +"<input type='button' class='login-button-modificar' onclick='ver_intercambio()' value='Ver Intercambio'/>"
+                       +"<input type='button' class='login-button-modificar' onclick='cerrar(2)' value='cerrar'/>"
                        +"<div>";
         $("#intercambio_ver").parent().append(agregar);
         $.post("AccionesIntercambio",{opcion:5,correo:correo},function(result){

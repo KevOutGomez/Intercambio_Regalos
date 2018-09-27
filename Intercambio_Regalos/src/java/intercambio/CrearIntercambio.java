@@ -35,7 +35,7 @@ public class CrearIntercambio extends HttpServlet {
             if (opcion.equals("1")) {
                 query = "select * from tema";
                 rs = acciones.select(query);
-                respuesta = "<select id='id_tema'>";
+                respuesta = "<label>Tema del Intercambio</label><select id='id_tema' class='login-input'>";
                 while(rs.next()){
                     respuesta +="<option value='"+rs.getInt("id")+"'>"+rs.getString("nombre_tema")+"</opiton>";
                 }

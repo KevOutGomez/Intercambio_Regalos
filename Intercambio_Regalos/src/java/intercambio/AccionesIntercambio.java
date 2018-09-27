@@ -38,14 +38,17 @@ public class AccionesIntercambio extends HttpServlet {
                     respuesta = "<div>";
                     while(rs.next()){
                         respuesta += "<h5>Amigos</h5>"
-                                    +"<label>Alias: "+rs.getString("usuario.alias")+"    Correo: "+rs.getString("usuario.correo")+"</label><br/>";
+                                    +"<div class='acciones_intercambio2'><label>Alias: "+rs.getString("usuario.alias")+"</label><label>Correo: "+rs.getString("usuario.correo")+"</label><br/></div>";
                     }
                     respuesta += "</div>";
                     out.print(respuesta);
                     break;
                 case 2:
+                    System.out.println("Case 2 Acciones Intercambio");
                     correo = request.getParameter("correo");
                     correo_amigo = request.getParameter("correo_amigo");
+                    System.out.println(correo);
+                    System.out.println(correo_amigo);
                     query = "insert into amigos values ('"+correo+"','"+correo_amigo+"')";
                     acciones.insertDeleteUpdate(query);
                     
@@ -53,7 +56,7 @@ public class AccionesIntercambio extends HttpServlet {
                     rs = acciones.select(query);
                     respuesta = "<div>";
                     while(rs.next()){
-                        respuesta += "<label>Alias: "+rs.getString("usuario.alias")+"    Correo: "+rs.getString("usuario.correo")+"</label><br/>";
+                        respuesta += "<div class='acciones_intercambio2'><label>Alias: "+rs.getString("usuario.alias")+"</label><label>Correo: "+rs.getString("usuario.correo")+"</label><br/></div>";
                     }
                     respuesta += "</div>";
                     out.print(respuesta);
@@ -63,17 +66,17 @@ public class AccionesIntercambio extends HttpServlet {
                     id_intercambio = request.getParameter("id_intercambio");
                     query = "select tema.nombre_tema, intercambio.monto_maximo, intercambio.fecha_limite, intercambio.fecha_intercambio, intercambio.comentarios from tema, intercambio where intercambio.id_tema = tema.id and intercambio.id = "+id_intercambio;
                     rs = acciones.select(query);
-                    respuesta = "<div>";
+                    respuesta = "<div >";
                     while(rs.next()){
-                        respuesta += "<label>Clave del intercambio: "+id_intercambio+"</label><br/>"
+                        respuesta += "<div class='acciones_intercambio2'><label>Clave del intercambio: "+id_intercambio+"</label><br/>"
                                   + "<label>Tema: "+rs.getString("tema.nombre_tema")+"</label><br/>"
                                   +"<label>Monto maximo: $"+rs.getDouble("intercambio.monto_maximo")+"</label><br/>"
                                   +"<label>Fecha Limite: "+rs.getDate("intercambio.fecha_limite")+"</label><br/>"
                                   +"<label>Fecha del Intercambio: "+rs.getDate("intercambio.fecha_intercambio")+"</label><br/>"
                                   +"<label>Comentarios: "+rs.getString("intercambio.comentarios")+"</label><br/>";
                     }
-                    respuesta += "<button  onclick='aceptar("+id_intercambio+")'>Aceptar</button><br/>"
-                                 +"<button  onclick='rechar()'>Rechazar</button><br/>";
+                    respuesta += "<button  class='login-button-modificar' onclick='aceptar("+id_intercambio+")'>Aceptar</button><br/>"
+                                 +"<button  class='login-button-modificar' onclick='rechar()'>Rechazar</button><br/></div>";
                     query = "select intercambio.nombre, tema.nombre_tema, intercambio.fecha_intercambio, usuario_intercambio.id_intercambiar, usuario.alias "
                             + "from usuario, intercambio, tema, usuario_intercambio where usuario_intercambio.estado_aceptacion=1 and tema.id = intercambio.id_tema and intercambio.id = usuario_intercambio.id_intercambio "
                             + "and usuario.correo = usuario_intercambio.id_intercambiar and usuario_intercambio.id_usuario = '"+correo+"'";

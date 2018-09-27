@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-US">
+<html lang="es">
 <head>
 	<meta charset="utf-8">
     <title>Crear Intercambio</title>
@@ -11,17 +11,20 @@
 </head>
 
 <body>
+    <div class="fondo" style="background-image: url(Images/holiday.png)">
         <header>
                 <input type="button" value="Salir" class="login-button-salir" id="salir">
         </header>
-        <form class="login" action="#">
+        <form class="login form-group " action="#">
                 <h1 class="login-title">Crear Intercambio</h1>
                 <input type="text" class="login-input" placeholder="Nombre del Intercambio" id="nombre" maxlength="20" autofocus required>
-                <label>Monto Maximo</label><input type="number" min="0" class="login-input" id="monto_maximo"  required/>
+                <br/><label>Monto Maximo</label><input type="number" min="0" class="login-input" id="monto_maximo"  required/>
                 <label>Fecha del Intercambio</label><input type="date" id="fecha_limite"  required>
                 <label>Fecha Limite de Registro</label><input type="date" id="fecha_intercambio"  required>
                 <label>Comentarios</label><textarea rows="4" cols="50" id="comentarios">Escribe un comentario</textarea>
                 <input type="submit" value="Guardar" class="login-button-registro" id="guardar">
+                <input type="submit" value="Regresar" class="login-button-registro" id="regresar">
         </form>
+    </div>
 </body>
 </html>

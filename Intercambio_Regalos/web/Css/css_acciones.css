@@ -4,7 +4,7 @@ body {
   
   .login {
     margin: 20px auto;
-    width: 330px;
+    width: 380px;
     padding: 30px 25px;
     background: white;
     border: 1px solid #c4c4c4;
@@ -22,20 +22,22 @@ body {
    
   }
   
-  .login-input {
-    width: 285px;
-    height: 50px;
-    margin-bottom: 25px;
+.login-input {
+    width: 280px;
+    height: 40px;
+    margin-top:10px;
     padding-left:10px;
     font-size: 15px;
     background: #fff;
     border: 1px solid #ccc;
     border-radius: 4px;
   }
+
   .login-input:focus {
       border-color:#6e8095;
       outline: none;
     }
+ 
   .login-button {
     width: 100%;
     height: 50px;
@@ -112,6 +114,22 @@ body {
     outline:0;
   }
 
+  .login-button-modificar {
+    width: 130px;
+    height: 30px;
+    
+    font-size: 15px;
+    color: #fff;
+    text-align: center;
+    background: #03c5ab;
+    border: 0px;
+    margin-top: 10px;
+    margin-left: 5px;
+    border-radius: 5px;
+    cursor: pointer; 
+    outline:0;
+  }
+
   .login-button-registro{
     width: 100%;
     height: 50px;
@@ -139,3 +157,32 @@ body {
     text-decoration:none;
     font-size:13px;
   }
+
+  h5{
+    font-size:20px;
+    padding: 5px 5px;
+    line-height: 30px;
+    font-weight: 300;
+    background: #f5f5ff;
+  }
+
+  .acciones_intercambio{
+    padding: 5px 5px;
+    margin-bottom: 10px;
+    line-height: 30px;
+    font-weight: 300;
+    background: #f5f5ff;
+  }
+  
+  .acciones_intercambio2{
+    padding: 5px 5px;
+    margin-bottom: 10px;
+    line-height: 30px;
+    font-weight: 300;
+    background: #f5f5ff;
+  }
+  
+  .fondo{
+        height: 950px;
+        width: 100%;
+   }
